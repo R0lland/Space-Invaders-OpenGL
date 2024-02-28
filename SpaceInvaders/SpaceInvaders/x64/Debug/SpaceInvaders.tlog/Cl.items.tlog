@@ -1,4 +1,14 @@
-C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\SpaceInvaders.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\SpaceInvaders.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\BallObject.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\BallObject.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\Game.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\Game.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\GameLevel.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\GameLevel.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\GameObject.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\GameObject.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\main.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\main.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ParticleGenerator.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\ParticleGenerator.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ResourceManager.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\ResourceManager.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\Shader.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\Shader.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\SpriteRenderer.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\SpriteRenderer.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\TextRenderer.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\TextRenderer.obj
+C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\Texture2D.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\Texture2D.obj
 C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\vendor\glm\detail\glm.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\glm.obj
 C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\vendor\imgui\imgui.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\imgui.obj
 C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\vendor\imgui\imgui_demo.cpp;C:\Users\mateus.trombetta\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\x64\Debug\imgui_demo.obj
