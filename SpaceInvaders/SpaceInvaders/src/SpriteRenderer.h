@@ -2,8 +2,6 @@
 #define SPRITE_RENDERER_H
 
 #include <GL/glew.h>
-//#include <C:\Users\mateus.trombetta\BreakoutOpenGL\Breakout_OpenGL\src\vendor\glm\glm.hpp>
-//#include <C:\Users\mateus.trombetta\BreakoutOpenGL\Breakout_OpenGL\src\vendor\glm\gtc\matrix_transform.hpp>
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
@@ -14,7 +12,10 @@
 
 class SpriteRenderer
 {
+    // Texture2D m_sprite;
+    // glm::vec3 m_color;
 public:
+    //SpriteRenderer(Texture2D texture, glm::vec3 color);
     // Constructor (inits shaders/shapes)
     SpriteRenderer(Shader &shader);
     // Destructor
@@ -27,6 +28,7 @@ private:
     unsigned int quadVAO;
     // Initializes and configures the quad's buffer and vertex attributes
     void initRenderData();
+    //virtual void Draw(SpriteRenderer &renderer);
 };
 
 #endif

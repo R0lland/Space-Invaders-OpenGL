@@ -16,7 +16,7 @@ void Player::Fire()
     {
         fireRate = 0.0f;
         std::cout << "FIRE" << std::endl;
-        m_bulletsManager->CreateBullet(Position + glm::vec2(Size.x / 2.0f, (Size.y + 1.0f) / 2.0f), 1);
+        m_bulletsManager->CreateBullet(GetTransform().Position + glm::vec2(GetTransform().Size.x / 2.0f, (GetTransform().Size.y + 1.0f) / 2.0f), 1);
     }
 }
 
@@ -27,9 +27,10 @@ void Player::Move(const int direction, const float dt)
         return;
     }
 
-    if (Position.x <= 1200 - Size.x && Position.x >= 0.0f)
+    if (GetTransform().Position.x <= 1200 - GetTransform().Size.x && GetTransform().Position.x >= 0.0f)
     {
-        Position.x += VELOCITY * direction * dt;
+        Transform& transform = GetTransform();
+        transform.SetPosition(transform.Position.x + (VELOCITY * direction * dt), transform.Position.y);
     }
 }
 

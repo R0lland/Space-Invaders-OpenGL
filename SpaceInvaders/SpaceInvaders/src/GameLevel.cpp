@@ -54,37 +54,22 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
     // calculate dimensions
     unsigned int height = tileData.size();
     unsigned int width = tileData[0].size(); // note we can index vector at [0] since this function is only called if height > 0
-    float unit_width = levelWidth / static_cast<float>(width), unit_height = levelHeight / height; 
+    float unit_width = 50.0f;// / static_cast<float>(width);
+    float unit_height = 50.0f;//levelHeight / height;
+    float xOffset = 180.0f;
+    float yOffset = 40.0f;
+    glm::vec3 color = glm::vec3(1.0f); // original: white
+    
     // initialize level tiles based on tileData		
     for (unsigned int y = 0; y < height; ++y)
     {
         for (unsigned int x = 0; x < width; ++x)
         {
-            // check block type from level data (2D level array)
-            if (tileData[y][x] == 1) // solid
-            {
-                glm::vec2 pos(unit_width * x, unit_height * y);
-                glm::vec2 size(unit_width, unit_height);
-                GameObject obj(pos, size, ResourceManager::GetTexture("block_solid"), glm::vec3(0.8f, 0.8f, 0.7f));
-                obj.IsSolid = true;
-                this->Aliens.push_back(obj);
-            }
-            else if (tileData[y][x] > 1)	// non-solid; now determine its color based on level data
-            {
-                glm::vec3 color = glm::vec3(1.0f); // original: white
-                if (tileData[y][x] == 2)
-                    color = glm::vec3(0.2f, 0.6f, 1.0f);
-                else if (tileData[y][x] == 3)
-                    color = glm::vec3(0.0f, 0.7f, 0.0f);
-                else if (tileData[y][x] == 4)
-                    color = glm::vec3(0.8f, 0.8f, 0.4f);
-                else if (tileData[y][x] == 5)
-                    color = glm::vec3(1.0f, 0.5f, 0.0f);
-
-                glm::vec2 pos(unit_width * x, unit_height * y);
-                glm::vec2 size(unit_width, unit_height);
-                this->Aliens.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
-            }
+            glm::vec2 pos(xOffset + ((unit_width + 10.0f) * x), yOffset + ((unit_height + 10.0f) * y));
+            glm::vec2 size(unit_width, unit_height);
+            std::string enemyId = "enemy" + std::to_string(tileData[y][x]);
+            //Creating aliens
+            this->Aliens.push_back(GameObject(pos, size, ResourceManager::GetTexture(enemyId), color));
         }
     }
 }

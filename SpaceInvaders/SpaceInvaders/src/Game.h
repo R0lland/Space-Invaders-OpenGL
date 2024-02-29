@@ -40,7 +40,7 @@ public:
     bool                    Keys[1024];
     unsigned int            Width, Height;
     SpriteRenderer  *Renderer;
-    ParticleGenerator   *Particles;
+    ///ParticleGenerator   *Particles;
 
     std::vector<GameLevel> Levels;
     unsigned int           Level;
@@ -55,7 +55,7 @@ public:
     const glm::vec2 INITIAL_BALL_VELOCITY{100.0f, -350.0f};
     // Radius of the ball object
     const float BALL_RADIUS = 12.5f;
-    BallObject *Ball;
+    //BallObject *Ball;
     
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
@@ -66,7 +66,7 @@ public:
     void ChangeInputFlag(unsigned int input, bool isActive);
     void Update(float dt);
     void Render();
-    void DoCollisions();
+    //void DoCollisions();
     // reset
     void ResetLevel();
     void ResetPlayer();

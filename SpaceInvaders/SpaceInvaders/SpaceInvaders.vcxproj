@@ -172,6 +172,7 @@
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\TextRenderer.cpp" />
     <ClCompile Include="src\Texture2D.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui.cpp" />
     <ClCompile Include="src\vendor\imgui\imgui_demo.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="src\SpriteRenderer.h" />
     <ClInclude Include="src\TextRenderer.h" />
     <ClInclude Include="src\Texture2D.h" />
+    <ClInclude Include="src\Transform.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_vector_relational.hpp" />
@@ -629,6 +631,7 @@
   <ItemGroup>
     <Content Include="res\levels\four.txt" />
     <Content Include="res\levels\one.txt" />
+    <Content Include="res\levels\space_invaders.txt" />
     <Content Include="res\levels\three.txt" />
     <Content Include="res\levels\two.txt" />
     <Content Include="res\shaders\FragmentParticle.shader" />
@@ -639,13 +642,13 @@
     <Content Include="res\textures\background.jpg" />
     <Content Include="res\textures\block.png" />
     <Content Include="res\textures\block_solid.png" />
+    <Content Include="res\textures\enemies\green.png" />
+    <Content Include="res\textures\enemies\red.png" />
+    <Content Include="res\textures\enemies\yellow.png" />
     <Content Include="res\textures\extra.png" />
-    <Content Include="res\textures\green.png" />
     <Content Include="res\textures\paddle.png" />
     <Content Include="res\textures\particle.png" />
     <Content Include="res\textures\player.png" />
-    <Content Include="res\textures\red.png" />
-    <Content Include="res\textures\yellow.png" />
     <Content Include="src\vendor\glm\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,10 @@
 ﻿#include "SpriteRenderer.h"
 
+// SpriteRenderer::SpriteRenderer(Texture2D texture, glm::vec3 color)
+//     : m_sprite(texture), m_color(color)
+// {
+// }
+
 SpriteRenderer::SpriteRenderer(Shader &shader)
 {
     this->shader = shader;
