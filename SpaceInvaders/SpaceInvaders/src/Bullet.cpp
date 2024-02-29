@@ -1,7 +1,7 @@
 ﻿#include "Bullet.h"
 
 Bullet::Bullet(glm::vec2 pos, glm::vec2 size, Texture2D sprite, int direction)
-  : GameObject(pos, size, sprite), m_direction(direction)
+  : Actor(pos, size, sprite), m_direction(direction)
 {
 }
 

@@ -4,7 +4,7 @@
 #include <utility>
 
 Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D sprite, std::shared_ptr<BulletsManager> bulletsManager)
-  : GameObject(pos, size, sprite)
+  : Actor(pos, size, sprite)
 {
     m_inputProcessor = std::make_unique<InputProcessor>();
     m_bulletsManager = std::move(bulletsManager);

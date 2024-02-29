@@ -2,10 +2,10 @@
 #include <memory>
 
 #include "BulletsManager.h"
-#include "GameObject.h"
+#include "Actor.h"
 #include "InputProcessor.h"
 
-class Player : public GameObject
+class Player : public Actor
 {
     const float VELOCITY = 500.0f;
     const float TIME_TO_FIRE = 0.5f;

@@ -1,11 +1,10 @@
-﻿#ifndef GAMELEVEL_H
-#define GAMELEVEL_H
+﻿#pragma once
 #include <vector>
 
 #include <GL/glew.h>
 #include <glm\glm.hpp>
 
-#include "GameObject.h"
+#include "Actor.h"
 #include "SpriteRenderer.h"
 #include "ResourceManager.h"
 
@@ -16,7 +15,7 @@ class GameLevel
 {
 public:
     // level state
-    std::vector<GameObject> Aliens;
+    std::vector<Actor> Aliens;
     // constructor
     GameLevel() { }
     // loads level from file
@@ -29,5 +28,3 @@ private:
     // initialize level from tile data
     void init(std::vector<std::vector<unsigned int>> tileData, unsigned int levelWidth, unsigned int levelHeight);
 };
-
-#endif

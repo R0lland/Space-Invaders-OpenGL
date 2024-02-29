@@ -1,5 +1,4 @@
-﻿#ifndef TEXT_RENDERER_H
-#define TEXT_RENDERER_H
+﻿#pragma once
 
 #include <map>
 
@@ -40,4 +39,3 @@ private:
     // render state
     unsigned int VAO, VBO;
 };
-#endif 

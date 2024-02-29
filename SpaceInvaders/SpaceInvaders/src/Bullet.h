@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "GameObject.h"
+#include "Actor.h"
 
-class Bullet : public GameObject
+class Bullet : public Actor
 {
     const float SPEED = 500.0f;
 

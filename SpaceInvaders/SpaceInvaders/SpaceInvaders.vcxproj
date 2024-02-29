@@ -162,7 +162,7 @@
     <ClCompile Include="src\BulletsManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameLevel.cpp" />
-    <ClCompile Include="src\GameObject.cpp" />
+    <ClCompile Include="src\Actor.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ParticleGenerator.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -189,7 +189,7 @@
     <ClInclude Include="src\BulletsManager.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameLevel.h" />
-    <ClInclude Include="src\GameObject.h" />
+    <ClInclude Include="src\Actor.h" />
     <ClInclude Include="src\ParticleGenerator.h" />
     <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\InputProcessor.h" />

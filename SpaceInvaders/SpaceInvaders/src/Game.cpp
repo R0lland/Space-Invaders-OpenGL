@@ -151,7 +151,7 @@ void Game::Render()
     Player->Draw(*Renderer);
 }
 
-bool CheckCollision(GameObject &one, GameObject &two) // AABB - AABB collision
+bool CheckCollision(Actor &one, Actor &two) // AABB - AABB collision
 {
     // collision x-axis?
     bool collisionX = one.GetTransform().Position.x + one.GetTransform().Size.x >= two.GetTransform().Position.x &&

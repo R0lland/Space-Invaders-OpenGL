@@ -1,5 +1,4 @@
-﻿#ifndef GAME_H
-#define GAME_H
+﻿#pragma once
 
 #include <vector>
 #include <GL/glew.h>
@@ -71,5 +70,3 @@ public:
     void ResetLevel();
     void ResetPlayer();
 };
-
-#endif

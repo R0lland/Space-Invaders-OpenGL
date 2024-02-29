@@ -1,5 +1,4 @@
-﻿#ifndef SPRITE_RENDERER_H
-#define SPRITE_RENDERER_H
+﻿#pragma once
 
 #include <GL/glew.h>
 
@@ -30,5 +29,3 @@ private:
     void initRenderData();
     //virtual void Draw(SpriteRenderer &renderer);
 };
-
-#endif
