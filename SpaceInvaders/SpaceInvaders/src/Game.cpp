@@ -27,7 +27,7 @@ Direction VectorDirection(glm::vec2 target)
 Game::Game(unsigned int width, unsigned int height) 
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
 { 
-
+    m_bulletsManager = std::make_shared<BulletsManager>();
 }
 
 Game::~Game()
@@ -53,7 +53,7 @@ void Game::Init()
     //ResourceManager::LoadTexture("res/textures/awesomeface.png", true, "face");
 
     // load textures
-    ResourceManager::LoadTexture("res/textures/paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("res/textures/player.png", true, "player");
     ResourceManager::LoadTexture("res/textures/background.jpg", false, "background");
     ResourceManager::LoadTexture("res/textures/awesomeface.png", true, "face");
     ResourceManager::LoadTexture("res/textures/block.png", false, "block");
@@ -74,7 +74,7 @@ void Game::Init()
         this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, 
         this->Height - PLAYER_SIZE.y
     );
-    Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
+    Player = new class Player(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"), m_bulletsManager);
 
     glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, 
                                               -BALL_RADIUS * 2.0f);
@@ -88,17 +88,21 @@ void Game::Init()
     );
 }
 
+void Game::ChangeInputFlag(unsigned int input, bool isActive)
+{
+    
+}
+
 void Game::Update(float dt)
 {
+    //First thing it needs to happen is to process inputs
+    Player->Update(dt);
+    
     Ball->Move(dt, this->Width);
+    m_bulletsManager->Update(dt);
     // update particles
     //Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     DoCollisions();
-    if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
-    {
-        this->ResetLevel();
-        this->ResetPlayer();
-    }
 }
 
 void Game::ResetLevel()
@@ -121,35 +125,6 @@ void Game::ResetPlayer()
     Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
 
-void Game::ProcessInput(float dt)
-{
-    if (this->State == GAME_ACTIVE)
-    {
-        float velocity = PLAYER_VELOCITY * dt;
-        // move playerboard
-        if (this->Keys[GLFW_KEY_A])
-        {
-            if (Player->Position.x >= 0.0f)
-            {
-                Player->Position.x -= velocity;
-                if (Ball->Stuck)
-                    Ball->Position.x -= velocity;
-            }
-        }
-        if (this->Keys[GLFW_KEY_D])
-        {
-            if (Player->Position.x <= this->Width - Player->Size.x)
-            {
-                Player->Position.x += velocity;
-                if (Ball->Stuck)
-                    Ball->Position.x += velocity;
-            }
-        }
-        if (this->Keys[GLFW_KEY_SPACE])
-            Ball->Stuck = false;
-    }
-}
-
 void Game::Render()
 {
     if(this->State == GAME_ACTIVE)
@@ -162,10 +137,11 @@ void Game::Render()
         );
         // draw level
         this->Levels[this->Level].Draw(*Renderer);
-        Ball->Draw(*Renderer);
+        m_bulletsManager->DrawBullets(*Renderer);
+        //Ball->Draw(*Renderer);
 
         // draw particles	
-        Particles->Draw();
+        //Particles->Draw();
     }
     Player->Draw(*Renderer);
 }
@@ -205,7 +181,7 @@ Collision CheckCollision(BallObject &one, GameObject &two) // AABB - Circle coll
 
 void Game::DoCollisions()
 {
-    for (GameObject &box : this->Levels[this->Level].Bricks)
+    for (GameObject &box : this->Levels[this->Level].Aliens)
     {
         if (!box.Destroyed)
         {

@@ -158,12 +158,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\BallObject.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
+    <ClCompile Include="src\BulletsManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\GameLevel.cpp" />
     <ClCompile Include="src\GameObject.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ParticleGenerator.cpp" />
     <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\InputProcessor.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
@@ -181,11 +184,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BallObject.h" />
+    <ClInclude Include="src\Bullet.h" />
+    <ClInclude Include="src\BulletsManager.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameLevel.h" />
     <ClInclude Include="src\GameObject.h" />
     <ClInclude Include="src\ParticleGenerator.h" />
     <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\InputProcessor.h" />
     <ClInclude Include="src\ResourceManager.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\SpriteRenderer.h" />
@@ -633,8 +639,13 @@
     <Content Include="res\textures\background.jpg" />
     <Content Include="res\textures\block.png" />
     <Content Include="res\textures\block_solid.png" />
+    <Content Include="res\textures\extra.png" />
+    <Content Include="res\textures\green.png" />
     <Content Include="res\textures\paddle.png" />
     <Content Include="res\textures\particle.png" />
+    <Content Include="res\textures\player.png" />
+    <Content Include="res\textures\red.png" />
+    <Content Include="res\textures\yellow.png" />
     <Content Include="src\vendor\glm\CMakeLists.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -23,7 +23,7 @@ const unsigned int SCREEN_WIDTH = 1200;
 // The height of the screen
 const unsigned int SCREEN_HEIGHT = 800;
 
-Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
+Game SpaceInvaders(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 int main(int argc, char *argv[])
 {
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
     // initialize game
     // ---------------
-    Breakout.Init();
+    SpaceInvaders.Init();
 
     // deltaTime variables
     // -------------------
@@ -74,19 +74,15 @@ int main(int argc, char *argv[])
         lastFrame = currentFrame;
         glfwPollEvents();
 
-        // manage user input
-        // -----------------
-        Breakout.ProcessInput(deltaTime);
-
         // update game state
         // -----------------
-        Breakout.Update(deltaTime);
+        SpaceInvaders.Update(deltaTime);
 
         // render
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        Breakout.Render();
+        SpaceInvaders.Render();
 
         glfwSwapBuffers(window);
     }
@@ -107,9 +103,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
-            Breakout.Keys[key] = true;
+            SpaceInvaders.Player->SetInputFlag(key, true);
         else if (action == GLFW_RELEASE)
-            Breakout.Keys[key] = false;
+            SpaceInvaders.Player->SetInputFlag(key, false);
     }
 }
 

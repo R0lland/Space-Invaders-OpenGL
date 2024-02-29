@@ -8,6 +8,7 @@
 #include "BallObject.h"
 #include "GameLevel.h"
 #include "ParticleGenerator.h"
+#include "Player.h"
 #include "SpriteRenderer.h"
 
 // Represents the current state of the game
@@ -32,6 +33,7 @@ typedef std::tuple<bool, Direction, glm::vec2> Collision; // <collision?, what d
 // easy access to each of the components and manageability.
 class Game
 {
+    std::shared_ptr<BulletsManager> m_bulletsManager;
 public:
     // game state
     GameState               State;	
@@ -47,13 +49,13 @@ public:
     const glm::vec2 PLAYER_SIZE{100.0f, 20.0f};
     // Initial velocity of the player paddle
     const float PLAYER_VELOCITY{500.0f};
-    GameObject *Player;
+    Player *Player;
 
     // Initial velocity of the Ball
     const glm::vec2 INITIAL_BALL_VELOCITY{100.0f, -350.0f};
     // Radius of the ball object
     const float BALL_RADIUS = 12.5f;
-    BallObject *Ball; 
+    BallObject *Ball;
     
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
@@ -61,7 +63,7 @@ public:
     // initialize game state (load all shaders/textures/levels)
     void Init();
     // game loop
-    void ProcessInput(float dt);
+    void ChangeInputFlag(unsigned int input, bool isActive);
     void Update(float dt);
     void Render();
     void DoCollisions();
