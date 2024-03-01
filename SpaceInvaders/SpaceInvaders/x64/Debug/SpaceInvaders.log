@@ -1,0 +1,61 @@
+﻿  ServiceLocator.cpp
+E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\AliensManager.cpp(13,22): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/ServiceLocator.cpp')
+  
+E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\AliensManager.cpp(14,21): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'src/ServiceLocator.cpp')
+  
+E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,23): error C2665: 'std::vector<std::unique_ptr<Manager,std::default_delete<Manager>>,std::allocator<std::unique_ptr<Manager,std::default_delete<Manager>>>>::push_back': no overloaded function could convert all the argument types
+  (compiling source file 'src/ServiceLocator.cpp')
+  E:\VisualStudioCommunity\VC\Tools\MSVC\14.38.33130\include\vector(874,23):
+  could be 'void std::vector<std::unique_ptr<Manager,std::default_delete<Manager>>,std::allocator<std::unique_ptr<Manager,std::default_delete<Manager>>>>::push_back(_Ty &&)'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  	E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,23):
+  	'void std::vector<std::unique_ptr<Manager,std::default_delete<Manager>>,std::allocator<std::unique_ptr<Manager,std::default_delete<Manager>>>>::push_back(_Ty &&)': cannot convert argument 1 from 'std::unique_ptr<AliensManager,std::default_delete<AliensManager>>' to '_Ty &&'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  		E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,53):
+  		Reason: cannot convert from 'std::unique_ptr<AliensManager,std::default_delete<AliensManager>>' to '_Ty'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  		E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,53):
+  		No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  E:\VisualStudioCommunity\VC\Tools\MSVC\14.38.33130\include\vector(870,23):
+  or       'void std::vector<std::unique_ptr<Manager,std::default_delete<Manager>>,std::allocator<std::unique_ptr<Manager,std::default_delete<Manager>>>>::push_back(const _Ty &)'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  	E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,23):
+  	'void std::vector<std::unique_ptr<Manager,std::default_delete<Manager>>,std::allocator<std::unique_ptr<Manager,std::default_delete<Manager>>>>::push_back(const _Ty &)': cannot convert argument 1 from 'std::unique_ptr<AliensManager,std::default_delete<AliensManager>>' to 'const _Ty &'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  		E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,53):
+  		Reason: cannot convert from 'std::unique_ptr<AliensManager,std::default_delete<AliensManager>>' to 'const _Ty'
+          with
+          [
+              _Ty=std::unique_ptr<Manager,std::default_delete<Manager>>
+          ]
+  		E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,53):
+  		No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+  E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,23):
+  while trying to match the argument list '(std::unique_ptr<AliensManager,std::default_delete<AliensManager>>)'
+  E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.h(21,23):
+  the template instantiation context (the oldest one first) is
+  	E:\Repos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\ServiceLocator.cpp(18,2):
+  	see reference to function template instantiation 'void ServiceLocator::RegisterManager<AliensManager>(void)' being compiled
+  
+  Manager.cpp
+  GameLevel.cpp
+  Actor.cpp
+  stb_image.cpp
+  Generating Code...

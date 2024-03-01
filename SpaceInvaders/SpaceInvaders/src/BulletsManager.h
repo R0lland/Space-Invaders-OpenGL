@@ -2,8 +2,9 @@
 #include <vector>
 
 #include "Bullet.h"
+#include "Manager.h"
 
-class BulletsManager
+class BulletsManager : Manager
 {
     std::vector<Bullet> m_bullets = {};
 public:

@@ -5,8 +5,10 @@
 #include "Actor.h"
 #include "InputProcessor.h"
 
+
 class Player : public Actor
 {
+private:
     const float VELOCITY = 500.0f;
     const float TIME_TO_FIRE = 0.5f;
     

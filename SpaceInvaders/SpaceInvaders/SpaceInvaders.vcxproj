@@ -109,7 +109,7 @@
       <PreprocessorDefinitions>GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)SpaceInvaders\src\vendor;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)SpaceInvaders\src\vendor;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)SpaceInvaders\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +157,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Alien.cpp" />
+    <ClCompile Include="src\ServiceLocator.cpp" />
+    <ClCompile Include="src\Manager.cpp" />
+    <ClCompile Include="src\AliensManager.cpp" />
     <ClCompile Include="src\BallObject.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\BulletsManager.cpp" />
@@ -169,6 +173,7 @@
     <ClCompile Include="src\InputProcessor.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Shader.cpp" />
+    <ClCompile Include="src\SpaceInvaders.cpp" />
     <ClCompile Include="src\SpriteRenderer.cpp" />
     <ClCompile Include="src\TextRenderer.cpp" />
     <ClCompile Include="src\Texture2D.cpp" />
@@ -184,6 +189,11 @@
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Alien.h" />
+    <ClInclude Include="src\Display.h" />
+    <ClInclude Include="src\ServiceLocator.h" />
+    <ClInclude Include="src\Manager.h" />
+    <ClInclude Include="src\AliensManager.h" />
     <ClInclude Include="src\BallObject.h" />
     <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\BulletsManager.h" />

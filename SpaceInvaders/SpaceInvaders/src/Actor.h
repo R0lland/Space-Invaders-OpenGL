@@ -34,7 +34,7 @@
 // minimal of state as described within GameObject.
 class Actor
 {
-private:
+protected:
     Transform m_transform;
     //SpriteRenderer m_spriteRenderer;
     

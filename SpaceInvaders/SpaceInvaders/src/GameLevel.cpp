@@ -1,14 +1,16 @@
 ﻿#include "GameLevel.h"
+#include "AliensManager.h"
 
 #include <fstream>
 #include <iostream>
 #include <sstream>
-
+#include <ServiceLocator.h>
 
 void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int levelHeight)
 {
+    AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
     // clear old data
-    this->Aliens.clear();
+    aliensManager.ClearAliens();
     // load from file
     unsigned int tileCode;
     GameLevel level;
@@ -30,46 +32,32 @@ void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int lev
             tileData.push_back(row);
         }
         if (tileData.size() > 0)
-            this->init(tileData, levelWidth, levelHeight);
+            aliensManager.CreateAliens(tileData, levelWidth, levelHeight);
     }
 }
 
 void GameLevel::Draw(SpriteRenderer &renderer)
 {
-    for (Actor &tile : this->Aliens)
-        if (!tile.Destroyed)
-            tile.Draw(renderer);
+    AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
+    std::vector<std::shared_ptr<Alien>>& aliens = aliensManager.GetAliens();
+    for (size_t i = 0; i < aliens.size(); i++)
+    {
+        if (!aliens[i]->Destroyed)
+        {
+           aliens[i]->Draw(renderer);
+        }
+    }
 }
 
 bool GameLevel::IsCompleted()
 {
-    for (Actor &tile : this->Aliens)
-        if (!tile.IsSolid && !tile.Destroyed)
-            return false;
+	AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
+	std::vector<std::shared_ptr<Alien>>& aliens = aliensManager.GetAliens();
+	
+    for (size_t i = 0; i < aliens.size(); i++)
+	{
+		if (!aliens[i]->IsSolid && !aliens[i]->Destroyed)
+			return false;
+	}
     return true;
-}
-
-void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned int levelWidth, unsigned int levelHeight)
-{
-    // calculate dimensions
-    unsigned int height = tileData.size();
-    unsigned int width = tileData[0].size(); // note we can index vector at [0] since this function is only called if height > 0
-    float unit_width = 50.0f;// / static_cast<float>(width);
-    float unit_height = 50.0f;//levelHeight / height;
-    float xOffset = 180.0f;
-    float yOffset = 40.0f;
-    glm::vec3 color = glm::vec3(1.0f); // original: white
-    
-    // initialize level tiles based on tileData		
-    for (unsigned int y = 0; y < height; ++y)
-    {
-        for (unsigned int x = 0; x < width; ++x)
-        {
-            glm::vec2 pos(xOffset + ((unit_width + 10.0f) * x), yOffset + ((unit_height + 10.0f) * y));
-            glm::vec2 size(unit_width, unit_height);
-            std::string enemyId = "enemy" + std::to_string(tileData[y][x]);
-            //Creating aliens
-            this->Aliens.push_back(Actor(pos, size, ResourceManager::GetTexture(enemyId), color));
-        }
-    }
 }

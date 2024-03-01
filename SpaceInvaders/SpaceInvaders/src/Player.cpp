@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <utility>
+#include <Display.h>
 
 Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D sprite, std::shared_ptr<BulletsManager> bulletsManager)
   : Actor(pos, size, sprite)
@@ -27,7 +28,7 @@ void Player::Move(const int direction, const float dt)
         return;
     }
 
-    if (GetTransform().Position.x <= 1200 - GetTransform().Size.x && GetTransform().Position.x >= 0.0f)
+    if (GetTransform().Position.x <= Display::WIDTH - GetTransform().Size.x && GetTransform().Position.x >= 0.0f)
     {
         Transform& transform = GetTransform();
         transform.SetPosition(transform.Position.x + (VELOCITY * direction * dt), transform.Position.y);
