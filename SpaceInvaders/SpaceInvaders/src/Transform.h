@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "glm/vec2.hpp"
+#include "ActorComponent.h"
 
-class Transform
+class Transform : public ActorComponent
 {
 public:
     glm::vec2 Position, Size;

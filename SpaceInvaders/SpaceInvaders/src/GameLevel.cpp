@@ -34,17 +34,17 @@ void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int lev
     }
 }
 
-void GameLevel::Draw(SpriteRenderer &renderer)
+void GameLevel::Update(float deltaTime)
 {
-    for (Actor &tile : this->Aliens)
-        if (!tile.Destroyed)
-            tile.Draw(renderer);
+    for (Actor &alien : this->Aliens)
+        if (!alien.Destroyed)
+            alien.Update(deltaTime);
 }
 
 bool GameLevel::IsCompleted()
 {
     for (Actor &tile : this->Aliens)
-        if (!tile.IsSolid && !tile.Destroyed)
+        if (!tile.Destroyed)
             return false;
     return true;
 }
@@ -69,7 +69,10 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
             glm::vec2 size(unit_width, unit_height);
             std::string enemyId = "enemy" + std::to_string(tileData[y][x]);
             //Creating aliens
-            this->Aliens.push_back(Actor(pos, size, ResourceManager::GetTexture(enemyId), color));
+            Actor alien {pos, size};
+            alien.GetSpriteRenderer().SetTexture(ResourceManager::GetTexture(enemyId));
+            this->Aliens.push_back(alien);
+            //this->Aliens.push_back(Actor(pos, size , color));
         }
     }
 }

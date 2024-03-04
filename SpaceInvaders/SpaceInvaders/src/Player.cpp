@@ -3,9 +3,12 @@
 #include <iostream>
 #include <utility>
 
-Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D sprite, std::shared_ptr<BulletsManager> bulletsManager)
-  : Actor(pos, size, sprite)
+#include "ResourceManager.h"
+
+Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager)
+  : Actor(pos, size)
 {
+    GetSpriteRenderer().SetTexture(texture);
     m_inputProcessor = std::make_unique<InputProcessor>();
     m_bulletsManager = std::move(bulletsManager);
 }
@@ -36,6 +39,7 @@ void Player::Move(const int direction, const float dt)
 
 void Player::Update(float dt)
 {
+    Actor::Update(dt);
     fireRate += dt;
     if (m_inputProcessor->Fire())
     {
@@ -48,4 +52,11 @@ void Player::Update(float dt)
 void Player::SetInputFlag(unsigned int input, bool isActive) const
 {
     m_inputProcessor->SetInputFlag(input, isActive);
+}
+
+void Player::SetData(Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager)
+{
+    GetSpriteRenderer().SetTexture(texture);
+    m_inputProcessor = std::make_unique<InputProcessor>();
+    m_bulletsManager = std::move(bulletsManager);
 }

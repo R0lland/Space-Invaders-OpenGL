@@ -1,8 +1,23 @@
 ﻿#include "Bullet.h"
 
-Bullet::Bullet(glm::vec2 pos, glm::vec2 size, Texture2D sprite, int direction)
-  : Actor(pos, size, sprite), m_direction(direction)
+#include "ResourceManager.h"
+
+Bullet::Bullet(glm::vec2 pos, glm::vec2 size, int direction)
+  : Actor(pos, size), m_direction(direction)
 {
+    //auto spriteRenderer = AddComponent<SpriteRenderer>();
+    GetSpriteRenderer().SetTexture(ResourceManager::GetTexture("face"));
+}
+
+void Bullet::Initialize()
+{
+    Actor::Initialize();
+}
+
+void Bullet::Update(const float deltaTime)
+{
+    Actor::Update(deltaTime);
+    Move(deltaTime);
 }
 
 void Bullet::Move(float dt)

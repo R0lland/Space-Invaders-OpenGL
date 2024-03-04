@@ -46,11 +46,6 @@ void Game::Init()
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetMatrix4("projection", projection);
-    // set render-specific controls
-    Shader myShader = ResourceManager::GetShader("sprite");
-    Renderer = new SpriteRenderer(myShader);
-    // load textures
-    //ResourceManager::LoadTexture("res/textures/awesomeface.png", true, "face");
 
     // load textures
     ResourceManager::LoadTexture("res/textures/player.png", true, "player");
@@ -79,18 +74,7 @@ void Game::Init()
         this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, 
         this->Height - PLAYER_SIZE.y
     );
-    Player = new class Player(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"), m_bulletsManager);
-
-    glm::vec2 ballPos = playerPos + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, 
-                                              -BALL_RADIUS * 2.0f);
-    //Ball = new BallObject(ballPos, BALL_RADIUS, INITIAL_BALL_VELOCITY,
-    //    ResourceManager::GetTexture("face"));
-
-    //Particles = new ParticleGenerator(
-    //    ResourceManager::GetShader("particle"), 
-    //    ResourceManager::GetTexture("particle"), 
-    //    1000
-    //);
+    player = new class Player(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"), m_bulletsManager);
 }
 
 void Game::ChangeInputFlag(unsigned int input, bool isActive)
@@ -100,13 +84,9 @@ void Game::ChangeInputFlag(unsigned int input, bool isActive)
 
 void Game::Update(float dt)
 {
-    //First thing it needs to happen is to process inputs
-    Player->Update(dt);
-    
-    //Ball->Move(dt, this->Width);
+    player->Update(dt);
     m_bulletsManager->Update(dt);
-    // update particles
-    //Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+    this->Levels[this->Level].Update(dt);
     //DoCollisions();
 }
 
@@ -125,30 +105,8 @@ void Game::ResetLevel()
 void Game::ResetPlayer()
 {
     // reset player/ball stats
-    Player->GetTransform().Size = PLAYER_SIZE;
-    Player->GetTransform().Position = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
-    //Ball->Reset(Player->GetTransform().Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
-}
-
-void Game::Render()
-{
-    if(this->State == GAME_ACTIVE)
-    {
-        // draw background
-        // Texture2D myTexture;
-        // myTexture = ResourceManager::GetTexture("background");
-        // Renderer->DrawSprite(myTexture, 
-        //     glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f
-        // );
-        // draw level
-        this->Levels[this->Level].Draw(*Renderer);
-        m_bulletsManager->DrawBullets(*Renderer);
-        //Ball->Draw(*Renderer);
-
-        // draw particles	
-        //Particles->Draw();
-    }
-    Player->Draw(*Renderer);
+    player->GetTransform().Size = PLAYER_SIZE;
+    player->GetTransform().Position = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
 }
 
 bool CheckCollision(Actor &one, Actor &two) // AABB - AABB collision

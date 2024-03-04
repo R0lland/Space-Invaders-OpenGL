@@ -14,9 +14,11 @@ class Player : public Actor
     std::shared_ptr<BulletsManager> m_bulletsManager;
     float fireRate = TIME_TO_FIRE;
 public:
-    Player(glm::vec2 pos, glm::vec2 size, Texture2D sprite, std::shared_ptr<BulletsManager> bulletsManager);
+    Player(glm::vec2 pos, glm::vec2 size, Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager);
     void Fire();
     void Move(int direction, float dt);
-    void Update(float dt);
+    
+    void Update(const float dt) override;
     void SetInputFlag(unsigned int input, bool isActive) const;
+    void SetData(Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager);
 };

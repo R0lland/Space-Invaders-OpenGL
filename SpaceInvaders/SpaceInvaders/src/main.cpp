@@ -76,13 +76,14 @@ int main(int argc, char *argv[])
 
         // update game state
         // -----------------
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
         SpaceInvaders.Update(deltaTime);
 
         // render
         // ------
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-        SpaceInvaders.Render();
+        
+        //SpaceInvaders.Render();
 
         glfwSwapBuffers(window);
     }
@@ -103,9 +104,9 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key >= 0 && key < 1024)
     {
         if (action == GLFW_PRESS)
-            SpaceInvaders.Player->SetInputFlag(key, true);
+            SpaceInvaders.player->SetInputFlag(key, true);
         else if (action == GLFW_RELEASE)
-            SpaceInvaders.Player->SetInputFlag(key, false);
+            SpaceInvaders.player->SetInputFlag(key, false);
     }
 }
 

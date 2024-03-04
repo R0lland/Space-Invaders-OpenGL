@@ -1,13 +1,9 @@
 ﻿#include "SpriteRenderer.h"
 
-// SpriteRenderer::SpriteRenderer(Texture2D texture, glm::vec3 color)
-//     : m_sprite(texture), m_color(color)
-// {
-// }
+#include "ResourceManager.h"
 
-SpriteRenderer::SpriteRenderer(Shader &shader)
+SpriteRenderer::SpriteRenderer(Transform& transform) : m_transform(transform)
 {
-    this->shader = shader;
     this->initRenderData();
 }
 
@@ -19,7 +15,7 @@ SpriteRenderer::~SpriteRenderer()
 void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
 {
     // prepare transformations
-    this->shader.Use();
+    this->m_shader.Use();
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(position, 0.0f));  // first translate (transformations are: scale happens first, then rotation, and then final translation happens; reversed order)
 
@@ -29,10 +25,10 @@ void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec
 
     model = glm::scale(model, glm::vec3(size, 1.0f)); // last scale
 
-    this->shader.SetMatrix4("model", model);
+    this->m_shader.SetMatrix4("model", model);
 
     // render textured quad
-    this->shader.SetVector3f("spriteColor", color);
+    this->m_shader.SetVector3f("spriteColor", color);
 
     glActiveTexture(GL_TEXTURE0);
     texture.Bind();
@@ -68,4 +64,23 @@ void SpriteRenderer::initRenderData()
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+}
+
+void SpriteRenderer::Initialize()
+{
+    ActorComponent::Initialize();
+    
+}
+
+void SpriteRenderer::SetTexture(Texture2D texture)
+{
+    m_shader = ResourceManager::GetShader("sprite");
+    m_color = glm::vec3(1.0f, 1.0f, 1.0f);
+    m_sprite = texture;
+}
+
+void SpriteRenderer::Update(const float deltaTime)
+{
+    ActorComponent::Update(deltaTime);
+    DrawSprite(m_sprite, m_transform.Position, m_transform.Size, m_transform.Rotation, m_color);
 }

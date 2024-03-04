@@ -1,14 +1,12 @@
 ﻿#pragma once
 
 #include <vector>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+// #include <GL/glew.h>
+// #include <GLFW/glfw3.h>
 
-#include "BallObject.h"
 #include "GameLevel.h"
 #include "ParticleGenerator.h"
 #include "Player.h"
-#include "SpriteRenderer.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -34,11 +32,12 @@ class Game
 {
     std::shared_ptr<BulletsManager> m_bulletsManager;
 public:
+    
     // game state
     GameState               State;	
     bool                    Keys[1024];
     unsigned int            Width, Height;
-    SpriteRenderer  *Renderer;
+    //SpriteRenderer  *Renderer;
     ///ParticleGenerator   *Particles;
 
     std::vector<GameLevel> Levels;
@@ -46,15 +45,8 @@ public:
 
     // Initial size of the player paddle
     const glm::vec2 PLAYER_SIZE{100.0f, 20.0f};
-    // Initial velocity of the player paddle
-    const float PLAYER_VELOCITY{500.0f};
-    Player *Player;
-
-    // Initial velocity of the Ball
-    const glm::vec2 INITIAL_BALL_VELOCITY{100.0f, -350.0f};
-    // Radius of the ball object
-    const float BALL_RADIUS = 12.5f;
-    //BallObject *Ball;
+    Player* player;
+    //Player *Player;
     
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
@@ -64,7 +56,6 @@ public:
     // game loop
     void ChangeInputFlag(unsigned int input, bool isActive);
     void Update(float dt);
-    void Render();
     //void DoCollisions();
     // reset
     void ResetLevel();
