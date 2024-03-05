@@ -1,12 +1,13 @@
 ﻿#pragma once
 #include "Actor.h"
+#include "Movement2d.h"
 
 class Bullet : public Actor
 {
     const float SPEED = 500.0f;
 
     int m_direction;
-    void Move(float dt);
+    Movement2d* m_movement_2d;
 public:
     Bullet(glm::vec2 pos, glm::vec2 size);
 

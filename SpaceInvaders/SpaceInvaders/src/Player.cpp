@@ -2,33 +2,22 @@
 
 #include <iostream>
 #include <utility>
+
+#include "Movement2d.h"
 #include "ResourceManager.h"
 
 Player::Player(glm::vec2 pos, glm::vec2 size) : Actor(pos, size)
 {
+    m_movement_2d = AddComponent<Movement2d>(GetTransform());
 }
 
 void Player::Fire()
 {
-    if (fireRate >= TIME_TO_FIRE)
+    if (m_fireRate >= TIME_TO_FIRE)
     {
-        fireRate = 0.0f;
+        m_fireRate = 0.0f;
         std::cout << "FIRE" << std::endl;
-        m_bulletsManager->CreateBullet(GetTransform().Position + glm::vec2(GetTransform().Size.x / 2.0f, (GetTransform().Size.y + 1.0f) / 2.0f), 1);
-    }
-}
-
-void Player::Move(const int direction, const float dt)
-{
-    if (direction == 0)
-    {
-        return;
-    }
-
-    if (GetTransform().Position.x <= 1200 - GetTransform().Size.x && GetTransform().Position.x >= 0.0f)
-    {
-        Transform& transform = GetTransform();
-        transform.SetPosition(transform.Position.x + (VELOCITY * direction * dt), transform.Position.y);
+        m_bulletsManager->CreateBullet(GetTransform().Position + glm::vec2(GetTransform().Size.x / 2.0f, (GetTransform().Size.y + 1.0f) / 2.0f), -1);
     }
 }
 
@@ -36,13 +25,13 @@ void Player::Update(float dt)
 {
     Actor::Update(dt);
     
-    fireRate += dt;
+    m_fireRate += dt;
     if (m_inputProcessor->Fire())
     {
         Fire();
     }
-
-    Move(m_inputProcessor->MoveDirection(), dt);
+    
+    m_movement_2d->Move(m_inputProcessor->MoveDirection(), 0.0f, dt, VELOCITY);
 }
 
 void Player::SetInputFlag(unsigned int input, bool isActive) const
@@ -55,4 +44,10 @@ void Player::SetData(Texture2D texture, std::shared_ptr<BulletsManager> bulletsM
     GetSpriteRenderer().SetTexture(texture);
     m_inputProcessor = std::make_unique<InputProcessor>();
     m_bulletsManager = std::move(bulletsManager);
+}
+
+void Player::Initialize()
+{
+    Actor::Initialize();
+    
 }

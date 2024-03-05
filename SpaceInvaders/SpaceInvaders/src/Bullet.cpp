@@ -5,8 +5,8 @@
 Bullet::Bullet(glm::vec2 pos, glm::vec2 size)
   : Actor(pos, size)
 {
-    //auto spriteRenderer = AddComponent<SpriteRenderer>();
     GetSpriteRenderer().SetTexture(ResourceManager::GetTexture("face"));
+    m_movement_2d = AddComponent<Movement2d>(GetTransform());
 }
 
 void Bullet::SetDirection(int direction)
@@ -22,10 +22,5 @@ void Bullet::Initialize()
 void Bullet::Update(const float deltaTime)
 {
     Actor::Update(deltaTime);
-    Move(deltaTime);
-}
-
-void Bullet::Move(float dt)
-{
-    GetTransform().Position.y -= SPEED * m_direction * dt;
+    m_movement_2d->Move(0.0f, m_direction, deltaTime, SPEED);
 }
