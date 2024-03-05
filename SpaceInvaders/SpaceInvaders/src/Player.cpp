@@ -2,8 +2,11 @@
 
 #include <iostream>
 #include <utility>
-
 #include "ResourceManager.h"
+
+Player::Player(glm::vec2 pos, glm::vec2 size) : Actor(pos, size)
+{
+}
 
 Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager)
   : Actor(pos, size)
@@ -40,6 +43,7 @@ void Player::Move(const int direction, const float dt)
 void Player::Update(float dt)
 {
     Actor::Update(dt);
+    
     fireRate += dt;
     if (m_inputProcessor->Fire())
     {

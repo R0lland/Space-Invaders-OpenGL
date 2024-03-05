@@ -15,7 +15,7 @@ class GameLevel
 {
 public:
     // level state
-    std::vector<Actor> Aliens;
+    std::vector<std::shared_ptr<Actor>> Aliens;
     // constructor
     GameLevel() { }
     // loads level from file

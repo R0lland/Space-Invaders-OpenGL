@@ -5,7 +5,7 @@
 
 class BulletsManager
 {
-    std::vector<Bullet> m_bullets = {};
+    std::vector<std::shared_ptr<Bullet>> m_bullets = {};
 public:
     BulletsManager();
     void Update(const float dt);

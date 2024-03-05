@@ -36,7 +36,7 @@ public:
 
     // constructor(s)
     Actor();
-    Actor(glm::vec2 pos, glm::vec2 size, glm::vec2 velocity = glm::vec2(0.0f, 0.0f));
+    Actor(glm::vec2 pos, glm::vec2 size);
     
     // draw sprite
     virtual void Initialize();

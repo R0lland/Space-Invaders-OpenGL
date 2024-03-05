@@ -8,8 +8,9 @@ class Bullet : public Actor
     int m_direction;
     void Move(float dt);
 public:
-    Bullet(glm::vec2 pos, glm::vec2 size, int direction);
-    
+    Bullet(glm::vec2 pos, glm::vec2 size);
+
+    void SetDirection(int direction);
     void Initialize() override;
     void Update(const float deltaTime) override;
 };

@@ -4,6 +4,7 @@
 // #include <GL/glew.h>
 // #include <GLFW/glfw3.h>
 
+#include "Engine.h"
 #include "GameLevel.h"
 #include "ParticleGenerator.h"
 #include "Player.h"
@@ -37,16 +38,14 @@ public:
     GameState               State;	
     bool                    Keys[1024];
     unsigned int            Width, Height;
-    //SpriteRenderer  *Renderer;
-    ///ParticleGenerator   *Particles;
 
     std::vector<GameLevel> Levels;
     unsigned int           Level;
 
     // Initial size of the player paddle
     const glm::vec2 PLAYER_SIZE{100.0f, 20.0f};
-    Player* player;
-    //Player *Player;
+    
+    std::shared_ptr<Player> player;
     
     // constructor/destructor
     Game(unsigned int width, unsigned int height);

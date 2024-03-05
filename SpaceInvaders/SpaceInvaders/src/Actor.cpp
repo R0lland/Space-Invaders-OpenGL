@@ -7,7 +7,7 @@ Actor::Actor()
     Initialize();
 }
 
-Actor::Actor(glm::vec2 pos, glm::vec2 size, glm::vec2 velocity) 
+Actor::Actor(glm::vec2 pos, glm::vec2 size) 
     : m_transform(std::make_shared<Transform>(pos, size, 0.0f)), Destroyed(false),
     m_spriteRenderer(std::make_shared<SpriteRenderer>(*m_transform) )
 {

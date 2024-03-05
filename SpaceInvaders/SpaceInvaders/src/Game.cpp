@@ -1,5 +1,6 @@
 ﻿#include "Game.h"
 
+#include "Engine.h"
 #include "ResourceManager.h"
 
 Direction VectorDirection(glm::vec2 target)
@@ -61,20 +62,23 @@ void Game::Init()
     ResourceManager::LoadTexture("res/textures/enemies/red.png", true, "enemy3");
     // load levels
     GameLevel one; one.Load("res/levels/space_invaders.txt", this->Width, this->Height / 2);
-    GameLevel two; two.Load("res/levels/two.txt", this->Width, this->Height / 2);
-    GameLevel three; three.Load("res/levels/three.txt", this->Width, this->Height / 2);
-    GameLevel four; four.Load("res/levels/four.txt", this->Width, this->Height / 2);
+    // GameLevel two; two.Load("res/levels/two.txt", this->Width, this->Height / 2);
+    // GameLevel three; three.Load("res/levels/three.txt", this->Width, this->Height / 2);
+    // GameLevel four; four.Load("res/levels/four.txt", this->Width, this->Height / 2);
     this->Levels.push_back(one);
-    this->Levels.push_back(two);
-    this->Levels.push_back(three);
-    this->Levels.push_back(four);
+    // this->Levels.push_back(two);
+    // this->Levels.push_back(three);
+    // this->Levels.push_back(four);
     this->Level = 0;
+
 
     glm::vec2 playerPos = glm::vec2(
         this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, 
         this->Height - PLAYER_SIZE.y
     );
-    player = new class Player(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("player"), m_bulletsManager);
+
+    player = Engine::Scene->Instantiate<Player>(playerPos, PLAYER_SIZE);
+    player->SetData(ResourceManager::GetTexture("player"), m_bulletsManager);
 }
 
 void Game::ChangeInputFlag(unsigned int input, bool isActive)
@@ -84,22 +88,13 @@ void Game::ChangeInputFlag(unsigned int input, bool isActive)
 
 void Game::Update(float dt)
 {
-    player->Update(dt);
-    m_bulletsManager->Update(dt);
-    this->Levels[this->Level].Update(dt);
     //DoCollisions();
 }
 
 void Game::ResetLevel()
 {
     if (this->Level == 0)
-        this->Levels[0].Load("res/levels/one.txt", this->Width, this->Height / 2);
-    else if (this->Level == 1)
-        this->Levels[1].Load("res/levels/two.txt", this->Width, this->Height / 2);
-    else if (this->Level == 2)
-        this->Levels[2].Load("res/levels/three.txt", this->Width, this->Height / 2);
-    else if (this->Level == 3)
-        this->Levels[3].Load("res/levels/four.txt", this->Width, this->Height / 2);
+        this->Levels[0].Load("res/levels/space_invaders.txt", this->Width, this->Height / 2);
 }
 
 void Game::ResetPlayer()

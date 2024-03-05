@@ -82,5 +82,6 @@ void SpriteRenderer::SetTexture(Texture2D texture)
 void SpriteRenderer::Update(const float deltaTime)
 {
     ActorComponent::Update(deltaTime);
+    
     DrawSprite(m_sprite, m_transform.Position, m_transform.Size, m_transform.Rotation, m_color);
 }
