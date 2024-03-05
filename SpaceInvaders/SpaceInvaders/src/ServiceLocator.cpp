@@ -1,7 +1,10 @@
 #include "ServiceLocator.h"
-#include <BulletsManager.h>
-#include <AliensManager.cpp>
-#include <ResourceManager.h>
+
+#include "AliensManager.h"
+#include "BulletsManager.h"
+
+ServiceLocator* ServiceLocator::instance = nullptr;
+std::vector<std::unique_ptr<Manager>> ServiceLocator::_managers;
 
 void ServiceLocator::InitAllManagers()
 {

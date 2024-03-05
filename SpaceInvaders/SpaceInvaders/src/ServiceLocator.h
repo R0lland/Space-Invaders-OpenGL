@@ -1,17 +1,27 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <type_traits>
 
+#include "Manager.h"
 // Forward declaration of the Manager class
-class Manager;
 
 class ServiceLocator {
 private:
+	static ServiceLocator* instance;
 	static std::vector<std::unique_ptr<Manager>> _managers;
 
 public:
+	static ServiceLocator* getInstance() {
+		if (!instance) {
+			instance = new ServiceLocator();
+		}
+		return instance;
+	}
+
+
 	template<typename T>
-	static void RegisterManager() {
+	static typename std::enable_if<std::is_base_of<Manager, T>::value>::type RegisterManager() {
 		_managers.push_back(std::make_unique<T>());
 	}
 
@@ -29,5 +39,10 @@ public:
 	// Function to initialize all registered managers
 	static void InitAllManagers();
 	static void CreateManagers();
-};
 
+
+	~ServiceLocator() {
+		// Clearing managers
+		_managers.clear();
+	}
+};

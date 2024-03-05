@@ -1,13 +1,9 @@
 #include "AliensManager.h"
 #include <ResourceManager.h>
+#include "Display.h"
 
-
-void AliensManager::Init()
-{
-}
-
-
-void AliensManager::CreateAliens(std::vector<std::vector<unsigned int>> tileData, unsigned int levelWidth, unsigned int levelHeight)
+//TODO: Move??
+std::vector<std::shared_ptr<Alien>>& AliensManager::CreateAliens(std::vector<std::vector<unsigned int>> tileData, unsigned int levelWidth, unsigned int levelHeight)
 {
 	// calculate dimensions
 	unsigned int height = tileData.size();
@@ -30,24 +26,46 @@ void AliensManager::CreateAliens(std::vector<std::vector<unsigned int>> tileData
 			this->m_Aliens.push_back(std::make_shared<Alien>(pos, size, ResourceManager::GetTexture(enemyId), color));
 		}
 	}
+
+    return m_Aliens;
 }
 
-void AliensManager::StartAliensMovement(float dt)
-{
-	int control = 0;
-	float movementRange = 3.f;
+void AliensManager::StartAliensMovement(float deltaTime) {
+    int cycles = 1; // Adjust as needed
+    float speed = 1.f;
+    float movementRange = 800.f; // Adjust this value as needed
+    int direction = 1; // Initial direction: move right
+    int cyclesCount = 0;
 
-	while (control == 0)
-	{
-		
-		for (size_t i = 0; i < m_Aliens.size(); i++)
-		{
-			m_Aliens[i]->Move()
-		}
-	}
+    while (cyclesCount < cycles) {
+        // Move right
+        for (size_t i = 0; i < m_Aliens.size(); i++) {
+             m_Aliens[i]->Move(direction, 0, deltaTime);
+        }
 
+        // Move down
+        for (size_t i = 0; i < m_Aliens.size(); i++) {
+             m_Aliens[i]->Move(0, 1, deltaTime);
+        }
+
+        // Move left
+        for (size_t i = 0; i < m_Aliens.size(); i++) {
+              m_Aliens[i]->Move(-direction, 0, deltaTime);
+        }
+
+        // Move down
+        for (size_t i = 0; i < m_Aliens.size(); i++) {
+             m_Aliens[i]->Move(0, 1, deltaTime); 
+        }
+
+        cyclesCount++;
+    }
 }
 
 void AliensManager::StopAliensMovement()
+{
+}
+
+void AliensManager::Init()
 {
 }

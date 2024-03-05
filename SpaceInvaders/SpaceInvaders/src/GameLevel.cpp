@@ -6,11 +6,18 @@
 #include <sstream>
 #include <ServiceLocator.h>
 
+GameLevel::GameLevel() : Aliens({})
+{
+}
+
 void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int levelHeight)
 {
     AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
     // clear old data
-    aliensManager.ClearAliens();
+    if (aliensManager.GetAliens().size() > 0)
+    {
+        aliensManager.ClearAliens();
+    }
     // load from file
     unsigned int tileCode;
     GameLevel level;
@@ -32,8 +39,14 @@ void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int lev
             tileData.push_back(row);
         }
         if (tileData.size() > 0)
-            aliensManager.CreateAliens(tileData, levelWidth, levelHeight);
+            Aliens = aliensManager.CreateAliens(tileData, levelWidth, levelHeight);
     }
+}
+
+void GameLevel::Play(float deltaTime)
+{
+    AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
+    aliensManager.StartAliensMovement(deltaTime);
 }
 
 void GameLevel::Draw(SpriteRenderer &renderer)

@@ -1452,4 +1452,52 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\FragmentParticle.shader" />
+    <None Include="res\shaders\FragmentSprite.shader" />
+    <None Include="res\shaders\VertexParticle.shader" />
+    <None Include="res\shaders\VertexSprite.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\levels\four.txt" />
+    <Text Include="res\levels\one.txt" />
+    <Text Include="res\levels\space_invaders.txt" />
+    <Text Include="res\levels\three.txt" />
+    <Text Include="res\levels\two.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\awesomeface.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\background.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\block.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\block_solid.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\extra.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\paddle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\particle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\green.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\red.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

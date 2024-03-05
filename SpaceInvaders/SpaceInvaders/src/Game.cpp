@@ -1,6 +1,7 @@
 ﻿#include "Game.h"
 
 #include "ResourceManager.h"
+#include <ServiceLocator.h>
 
 Direction VectorDirection(glm::vec2 target)
 {
@@ -37,6 +38,9 @@ Game::~Game()
 
 void Game::Init()
 {
+    ServiceLocator* locator = ServiceLocator::getInstance(); 
+    locator->CreateManagers();
+
     // load shaders
     ResourceManager::LoadShader("res/shaders/VertexSprite.shader", "res/shaders/FragmentSprite.shader", nullptr, "sprite");
     ResourceManager::LoadShader("res/shaders/VertexParticle.shader", "res/shaders/FragmentParticle.shader", nullptr, "particle");
@@ -91,6 +95,8 @@ void Game::Init()
     //    ResourceManager::GetTexture("particle"), 
     //    1000
     //);
+
+    //State = GAME_PLAYING;
 }
 
 void Game::ChangeInputFlag(unsigned int input, bool isActive)
@@ -108,6 +114,10 @@ void Game::Update(float dt)
     // update particles
     //Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
     //DoCollisions();
+
+    
+    this->Levels[Level].Play(dt);
+    
 }
 
 void Game::ResetLevel()

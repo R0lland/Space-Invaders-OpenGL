@@ -3,6 +3,6 @@ class Manager
 {
 public:
 	Manager();
-	virtual void Init();
+	virtual void Init() = 0;
 };
 

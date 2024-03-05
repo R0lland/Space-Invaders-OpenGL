@@ -2,6 +2,10 @@
 
 #include "ResourceManager.h"
 
+void BulletsManager::Init()
+{
+}
+
 BulletsManager::BulletsManager()
 {
 }

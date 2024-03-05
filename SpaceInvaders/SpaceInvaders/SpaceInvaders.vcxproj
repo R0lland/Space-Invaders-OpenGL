@@ -661,6 +661,32 @@
     <Content Include="res\textures\player.png" />
     <Content Include="src\vendor\glm\CMakeLists.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\FragmentParticle.shader" />
+    <None Include="res\shaders\FragmentSprite.shader" />
+    <None Include="res\shaders\VertexParticle.shader" />
+    <None Include="res\shaders\VertexSprite.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\levels\four.txt" />
+    <Text Include="res\levels\one.txt" />
+    <Text Include="res\levels\space_invaders.txt" />
+    <Text Include="res\levels\three.txt" />
+    <Text Include="res\levels\two.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\awesomeface.png" />
+    <Image Include="res\textures\background.jpg" />
+    <Image Include="res\textures\block.png" />
+    <Image Include="res\textures\block_solid.png" />
+    <Image Include="res\textures\enemies\green.png" />
+    <Image Include="res\textures\enemies\red.png" />
+    <Image Include="res\textures\enemies\yellow.png" />
+    <Image Include="res\textures\extra.png" />
+    <Image Include="res\textures\paddle.png" />
+    <Image Include="res\textures\particle.png" />
+    <Image Include="res\textures\player.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
