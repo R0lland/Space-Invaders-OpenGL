@@ -8,14 +8,6 @@ Player::Player(glm::vec2 pos, glm::vec2 size) : Actor(pos, size)
 {
 }
 
-Player::Player(glm::vec2 pos, glm::vec2 size, Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager)
-  : Actor(pos, size)
-{
-    GetSpriteRenderer().SetTexture(texture);
-    m_inputProcessor = std::make_unique<InputProcessor>();
-    m_bulletsManager = std::move(bulletsManager);
-}
-
 void Player::Fire()
 {
     if (fireRate >= TIME_TO_FIRE)

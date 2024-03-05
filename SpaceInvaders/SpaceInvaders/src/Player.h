@@ -15,7 +15,6 @@ class Player : public Actor
     float fireRate = TIME_TO_FIRE;
 public:
     Player(glm::vec2 pos, glm::vec2 size);
-    Player(glm::vec2 pos, glm::vec2 size, Texture2D texture, std::shared_ptr<BulletsManager> bulletsManager);
     void Fire();
     void Move(int direction, float dt);
     

@@ -12,4 +12,5 @@ public:
 
     void SetPosition(const float x, const float y);
     void SetSize(const float x, const float y);
+    void SetRotation(float rot);
 };

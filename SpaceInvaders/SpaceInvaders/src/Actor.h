@@ -14,22 +14,28 @@
 class Actor
 {
 private:
-    std::shared_ptr<Transform> m_transform;
-    std::shared_ptr<SpriteRenderer> m_spriteRenderer;
-    std::vector<std::shared_ptr<ActorComponent>> m_actor_components;
+    Transform* m_transform;
+    SpriteRenderer* m_spriteRenderer;
+    std::vector<std::unique_ptr<ActorComponent>> m_actor_components;
     
 public:
 
     template<typename TComponent>
-    std::enable_if_t<std::is_base_of_v<ActorComponent, TComponent>, TComponent> AddComponent()
+    std::enable_if_t<std::is_base_of_v<ActorComponent, TComponent>, TComponent*> AddComponent()
     {
-        return TComponent {};
+        std::unique_ptr<TComponent> component = std::make_unique<TComponent>();
+        m_actor_components.push_back(std::move(component));
+        TComponent* castedType = static_cast<TComponent*>(m_actor_components.back().get());
+        return castedType;
     }
 
     template<typename TComponent>
-    std::enable_if_t<std::is_base_of_v<ActorComponent, TComponent>, TComponent> AddComponent(Transform& transform)
+    std::enable_if_t<std::is_base_of_v<ActorComponent, TComponent>, TComponent*> AddComponent(Transform& transform)
     {
-        return TComponent {transform};
+        std::unique_ptr<TComponent> component = std::make_unique<TComponent>(transform);
+        m_actor_components.push_back(std::move(component));
+        TComponent* castedType = static_cast<TComponent*>(m_actor_components.back().get());
+        return castedType;
     }
     
     bool Destroyed;

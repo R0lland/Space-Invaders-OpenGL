@@ -4,6 +4,7 @@ Transform::Transform()
 {
     SetPosition(0.0f, 0.0f);
     SetSize(0.0f, 0.0f);
+    SetRotation(0.0f);
 }
 
 Transform::Transform(glm::vec2 position, glm::vec2 size, float rotation)
@@ -21,4 +22,9 @@ void Transform::SetSize(const float x, const float y)
 {
     Size.x = x;
     Size.y = y;
+}
+
+void Transform::SetRotation(float rot)
+{
+    Rotation = rot;
 }
