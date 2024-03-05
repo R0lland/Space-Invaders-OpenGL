@@ -160,6 +160,7 @@
     <ClCompile Include="src\ActorComponent.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\BulletsManager.cpp" />
+    <ClCompile Include="src\Collider2D.cpp" />
     <ClCompile Include="src\Debug.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Game.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="src\ActorComponent.h" />
     <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\BulletsManager.h" />
+    <ClInclude Include="src\Collider2D.h" />
     <ClInclude Include="src\Debug.h" />
     <ClInclude Include="src\Engine.h" />
     <ClInclude Include="src\Game.h" />

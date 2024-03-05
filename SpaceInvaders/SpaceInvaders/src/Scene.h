@@ -3,10 +3,12 @@
 #include <vector>
 
 #include "Actor.h"
+#include "Collider2D.h"
 
 class Scene
 {
     std::vector<std::shared_ptr<Actor>> m_actors;
+    std::vector<Collider2D*> m_colliders2D;
 public:
     template<typename T>
     std::shared_ptr<T> Instantiate()
@@ -24,11 +26,8 @@ public:
         return instance_ptr;
     }
     
-    void Update(float dt)
-    {
-        for (std::shared_ptr<Actor>& actor : m_actors)
-        {
-            actor->Update(dt);
-        }
-    }
+    void Update(float dt);
+    void AddCollider(Collider2D* collider_2d);
+    bool CheckCollision(Collider2D &one, Collider2D &two); // AABB - AABB collision
+    void UpdateCollisions();
 };

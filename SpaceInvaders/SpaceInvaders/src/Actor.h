@@ -5,6 +5,8 @@
 #include <vector>
 #include <glm\glm.hpp>
 
+#include "Collider2D.h"
+#include "Engine.h"
 #include "SpriteRenderer.h"
 #include "Transform.h"
 
@@ -37,8 +39,18 @@ public:
         TComponent* castedType = static_cast<TComponent*>(m_actor_components.back().get());
         return castedType;
     }
+
+    template<typename TComponent>
+    std::enable_if_t<std::is_base_of_v<Collider2D, TComponent>, TComponent*> AddComponent()
+    {
+        std::unique_ptr<TComponent> component = std::make_unique<TComponent>();
+        m_actor_components.push_back(std::move(component));
+        TComponent* castedType = static_cast<TComponent*>(m_actor_components.back().get());
+        Engine::Scene->AddCollider(castedType);
+        return castedType;
+    }
     
-    bool IsActive;
+    bool IsActive = true;
 
     // constructor(s)
     Actor();
