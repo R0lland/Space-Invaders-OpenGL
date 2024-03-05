@@ -44,7 +44,7 @@ void GameLevel::Update(float deltaTime)
 bool GameLevel::IsCompleted()
 {
     for (std::shared_ptr<Actor> &tile : this->Aliens)
-        if (!tile->Destroyed)
+        if (tile->IsActive)
             return false;
     return true;
 }

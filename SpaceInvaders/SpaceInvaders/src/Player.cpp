@@ -1,8 +1,7 @@
 ﻿#include "Player.h"
-
-#include <iostream>
 #include <utility>
 
+#include "Debug.h"
 #include "Movement2d.h"
 #include "ResourceManager.h"
 
@@ -16,7 +15,7 @@ void Player::Fire()
     if (m_fireRate >= TIME_TO_FIRE)
     {
         m_fireRate = 0.0f;
-        std::cout << "FIRE" << std::endl;
+        Debug::Log("Fire");
         m_bulletsManager->CreateBullet(GetTransform().Position + glm::vec2(GetTransform().Size.x / 2.0f, (GetTransform().Size.y + 1.0f) / 2.0f), -1);
     }
 }

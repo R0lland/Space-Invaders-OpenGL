@@ -38,7 +38,7 @@ public:
         return castedType;
     }
     
-    bool Destroyed;
+    bool IsActive;
 
     // constructor(s)
     Actor();
@@ -47,6 +47,8 @@ public:
     // draw sprite
     virtual void Initialize();
     virtual void Update(const float deltaTime);
+
+    void SetActive(bool active) { IsActive = active; }
 
     Transform& GetTransform() { return *m_transform; }
     SpriteRenderer& GetSpriteRenderer() { return *m_spriteRenderer; }

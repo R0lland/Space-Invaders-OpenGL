@@ -23,10 +23,7 @@ void Movement2d::Move(int directionX, int directionY, float deltaTime, float vel
         return;
     }
 
-    if (m_transform.Position.x <= 1200 - m_transform.Size.x && m_transform.Position.x >= 0.0f)
-    {
-        m_transform.SetPosition(
+    m_transform.SetPosition(
             m_transform.Position.x + (velocity * directionX * deltaTime),
             m_transform.Position.y + (velocity * directionY * deltaTime));
-    }
 }
