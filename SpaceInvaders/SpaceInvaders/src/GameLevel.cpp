@@ -10,8 +10,9 @@ GameLevel::GameLevel() : Aliens({})
 {
 }
 
-void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int levelHeight)
+void GameLevel::Load(unsigned int index, const char *file, unsigned int levelWidth, unsigned int levelHeight)
 {
+    _index = index;
     AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
     // clear old data
     if (aliensManager.GetAliens().size() > 0)
@@ -46,7 +47,7 @@ void GameLevel::Load(const char *file, unsigned int levelWidth, unsigned int lev
 void GameLevel::Play(float deltaTime)
 {
     AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
-    aliensManager.StartAliensMovement(deltaTime);
+    aliensManager.AliensMovement(deltaTime);
 }
 
 void GameLevel::Draw(SpriteRenderer &renderer)

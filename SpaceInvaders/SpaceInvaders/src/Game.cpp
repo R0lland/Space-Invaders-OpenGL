@@ -69,10 +69,10 @@ void Game::Init()
     ResourceManager::LoadTexture("res/textures/enemies/yellow.png", true, "enemy2");
     ResourceManager::LoadTexture("res/textures/enemies/red.png", true, "enemy3");
     // load levels
-    GameLevel one; one.Load("res/levels/space_invaders.txt", this->Width, this->Height / 2);
-    GameLevel two; two.Load("res/levels/two.txt", this->Width, this->Height / 2);
-    GameLevel three; three.Load("res/levels/three.txt", this->Width, this->Height / 2);
-    GameLevel four; four.Load("res/levels/four.txt", this->Width, this->Height / 2);
+    GameLevel one; one.Load(0, "res/levels/space_invaders.txt", this->Width, this->Height / 2);
+    GameLevel two; two.Load(1, "res/levels/two.txt", this->Width, this->Height / 2);
+    GameLevel three; three.Load(2, "res/levels/three.txt", this->Width, this->Height / 2);
+    GameLevel four; four.Load(3, "res/levels/four.txt", this->Width, this->Height / 2);
     this->Levels.push_back(one);
     this->Levels.push_back(two);
     this->Levels.push_back(three);
@@ -123,13 +123,13 @@ void Game::Update(float dt)
 void Game::ResetLevel()
 {
     if (this->Level == 0)
-        this->Levels[0].Load("res/levels/one.txt", this->Width, this->Height / 2);
+        this->Levels[0].Load(0, "res/levels/one.txt", this->Width, this->Height / 2);
     else if (this->Level == 1)
-        this->Levels[1].Load("res/levels/two.txt", this->Width, this->Height / 2);
+        this->Levels[1].Load(1, "res/levels/two.txt", this->Width, this->Height / 2);
     else if (this->Level == 2)
-        this->Levels[2].Load("res/levels/three.txt", this->Width, this->Height / 2);
+        this->Levels[2].Load(2, "res/levels/three.txt", this->Width, this->Height / 2);
     else if (this->Level == 3)
-        this->Levels[3].Load("res/levels/four.txt", this->Width, this->Height / 2);
+        this->Levels[3].Load(3, "res/levels/four.txt", this->Width, this->Height / 2);
 }
 
 void Game::ResetPlayer()

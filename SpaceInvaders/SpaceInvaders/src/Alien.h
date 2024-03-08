@@ -5,7 +5,7 @@
 class Alien : public Actor
 {
 private:
-	const int SPEED = 50;
+	const int SPEED = 100;
 
 public:
 	Alien();

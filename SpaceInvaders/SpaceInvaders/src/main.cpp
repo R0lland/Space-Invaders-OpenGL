@@ -21,7 +21,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 // The Width of the screen
 const unsigned int SCREEN_WIDTH = 1200;
 // The height of the screen
-const unsigned int SCREEN_HEIGHT = 800;
+const unsigned int SCREEN_HEIGHT = 600;
 
 Game SpaceInvaders(SCREEN_WIDTH, SCREEN_HEIGHT);
 
