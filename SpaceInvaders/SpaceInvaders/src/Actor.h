@@ -7,6 +7,7 @@
 #include "Texture2D.h"
 #include "SpriteRenderer.h"
 #include "Transform.h"
+#include <vector>
 
 // struct asset_ptr
 // {
@@ -37,7 +38,7 @@ class Actor
 protected:
     Transform m_transform;
     //SpriteRenderer m_spriteRenderer;
-    
+
 public:
     // object state
     glm::vec2   Velocity;
@@ -45,13 +46,24 @@ public:
     bool        IsSolid;
     bool        Destroyed;
     // render state
-    Texture2D   Sprite;	
+    Texture2D   Sprite;
+
+    // Animation
+    std::vector<Texture2D> Animation{};
+    unsigned int CurrentFrameIndex;
+    float AnimationSpeed = 1.f;
+    float AnimationTimer;
+
+
     // constructor(s)
     Actor();
     Actor(glm::vec2 pos, glm::vec2 size, float rotation);
     Actor(glm::vec2 pos, glm::vec2 size, Texture2D sprite, glm::vec3 color = glm::vec3(1.0f), glm::vec2 velocity = glm::vec2(0.0f, 0.0f));
+    Actor(glm::vec2 pos, glm::vec2 size, std::vector<Texture2D> animations, glm::vec3 color = glm::vec3(1.0f), glm::vec2 velocity = glm::vec2(0.0f, 0.0f));
+
     // draw sprite
     virtual void Draw(SpriteRenderer &renderer);
+    virtual void Update(float deltaTime);
 
     Transform& GetTransform() { return m_transform; }
 };

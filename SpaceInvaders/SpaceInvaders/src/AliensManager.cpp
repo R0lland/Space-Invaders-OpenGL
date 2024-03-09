@@ -22,7 +22,7 @@ std::vector<std::shared_ptr<Alien>>& AliensManager::CreateAliens(std::vector<std
 			glm::vec2 size(unit_width, unit_height);
 			std::string enemyId = "enemy" + std::to_string(tileData[y][x]);
 			//Creating aliens
-			this->m_Aliens.push_back(std::make_shared<Alien>(pos, size, ResourceManager::GetTexture(enemyId), color));
+			this->m_Aliens.push_back(std::make_shared<Alien>(pos, size, ResourceManager::GetAnimation(enemyId), color));
 		}
 	}
 
@@ -59,55 +59,9 @@ void AliensManager::AliensMovement(float deltaTime) {
     MoveAliens(static_cast<int>(_currentDirection), deltaTime);
 }
 
-
-
-
-
-
-//void AliensManager::AliensMovement(float deltaTime) {
-//  
-//    if (CheckAliensAtBorder(1) && _currentDirection == CurrentDirection::GoingRight)
-//    {
-//        _currentDirection = CurrentDirection::GoingDown;
-//    }
-//    if (CheckAliensAtBorder(1) && _currentDirection == CurrentDirection::GoingDown 
-//        && _currentMovementAmount < _maxVerticalMovementAmount)
-//    {
-//        _currentMovementAmount += 1 * deltaTime;
-//    }
-//    if (CheckAliensAtBorder(1) && _currentDirection == CurrentDirection::GoingDown 
-//        && _currentMovementAmount >= _maxVerticalMovementAmount)
-//    {
-//        _currentDirection = CurrentDirection::GoingLeft;
-//        _currentMovementAmount = 0;
-//    }
-//    if (CheckAliensAtBorder(1) && _currentDirection == CurrentDirection::GoingLeft)
-//    {
-//  
-//    }
-//    if (CheckAliensAtBorder(-1) && _currentDirection == CurrentDirection::GoingLeft)
-//    {
-//        _currentDirection = CurrentDirection::GoingDown;
-//    }
-//    if (CheckAliensAtBorder(-1) && _currentDirection == CurrentDirection::GoingDown 
-//        && _currentMovementAmount < _maxVerticalMovementAmount)
-//    {
-//        _currentMovementAmount += 1 * deltaTime;
-//    }
-//    if (CheckAliensAtBorder(-1) && _currentDirection == CurrentDirection::GoingDown 
-//        && _currentMovementAmount >= _maxVerticalMovementAmount)
-//    {
-//        _currentDirection = CurrentDirection::GoingRight;
-//        _currentMovementAmount = 0;
-//    }
-//
-//    MoveAliens(static_cast<int>(_currentDirection), deltaTime);
-//}
-
 bool AliensManager::CheckAliensAtBorder(int direction) {
     float greatestX = -FLT_MAX;
     float lowestX = FLT_MAX;
-    float alienWidth = m_Aliens[0]->Sprite.Width;
     for (size_t i = 0; i < m_Aliens.size(); i++) {
         float alienX = m_Aliens[i]->GetTransform().Position.x;
         if (alienX > greatestX)
@@ -120,13 +74,13 @@ bool AliensManager::CheckAliensAtBorder(int direction) {
     switch (direction)
     {
         case -1:
-            if (lowestX <= (alienWidth / 2))
+            if (lowestX <= 50)
             {
                 return true;
             }
             break;
         case 1:
-            if (greatestX >= (Display::WIDTH - (alienWidth + 20))) {
+            if (greatestX >= (Display::WIDTH - 70)) {
                 return true;
             }
             break;
@@ -135,6 +89,14 @@ bool AliensManager::CheckAliensAtBorder(int direction) {
     }
  
     return false;
+}
+
+void AliensManager::UpdateAliens(float deltaTime)
+{
+    for (size_t i = 0; i < m_Aliens.size(); i++)
+    {
+        m_Aliens[i]->Update(deltaTime);
+    }
 }
 
 void AliensManager::MoveAliens(int horizontalDirection, float deltaTime) {

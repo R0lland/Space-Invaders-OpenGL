@@ -94,6 +94,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +111,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)SpaceInvaders\src\vendor;$(SolutionDir)Dependencies\GLFW\include;$(SolutionDir)Dependencies\GLEW\include;$(SolutionDir)SpaceInvaders\src</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,6 +131,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,6 +151,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +161,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Animator.cpp" />
     <ClCompile Include="src\Alien.cpp" />
     <ClCompile Include="src\ServiceLocator.cpp" />
     <ClCompile Include="src\Manager.cpp" />
@@ -189,6 +194,7 @@
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Animator.h" />
     <ClInclude Include="src\Alien.h" />
     <ClInclude Include="src\Display.h" />
     <ClInclude Include="src\ServiceLocator.h" />
@@ -679,6 +685,12 @@
     <Image Include="res\textures\background.jpg" />
     <Image Include="res\textures\block.png" />
     <Image Include="res\textures\block_solid.png" />
+    <Image Include="res\textures\enemies\animations\blue\blue_a.png" />
+    <Image Include="res\textures\enemies\animations\blue\blue_b.png" />
+    <Image Include="res\textures\enemies\animations\green\green_a.png" />
+    <Image Include="res\textures\enemies\animations\green\green_b.png" />
+    <Image Include="res\textures\enemies\animations\red\red_a.png" />
+    <Image Include="res\textures\enemies\animations\red\red_b.png" />
     <Image Include="res\textures\enemies\green.png" />
     <Image Include="res\textures\enemies\red.png" />
     <Image Include="res\textures\enemies\yellow.png" />

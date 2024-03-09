@@ -105,6 +105,9 @@
     <ClCompile Include="src\Alien.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Animator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BallObject.h">
@@ -1451,6 +1454,9 @@
     <ClInclude Include="src\Display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Animator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\FragmentParticle.shader" />
@@ -1497,6 +1503,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\textures\enemies\yellow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\red\red_b.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\red\red_a.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\green\green_b.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\green\green_a.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\blue\blue_b.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\enemies\animations\blue\blue_a.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

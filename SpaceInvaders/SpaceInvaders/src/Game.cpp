@@ -68,6 +68,11 @@ void Game::Init()
     ResourceManager::LoadTexture("res/textures/enemies/green.png", true, "enemy1");
     ResourceManager::LoadTexture("res/textures/enemies/yellow.png", true, "enemy2");
     ResourceManager::LoadTexture("res/textures/enemies/red.png", true, "enemy3");
+
+    ResourceManager::LoadAnimation("res/textures/enemies/animations/red", true, "enemy3");
+    ResourceManager::LoadAnimation("res/textures/enemies/animations/green", true, "enemy2");
+    ResourceManager::LoadAnimation("res/textures/enemies/animations/blue", true, "enemy1");
+
     // load levels
     GameLevel one; one.Load(0, "res/levels/space_invaders.txt", this->Width, this->Height / 2);
     GameLevel two; two.Load(1, "res/levels/two.txt", this->Width, this->Height / 2);

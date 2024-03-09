@@ -6,17 +6,22 @@
 ** Creative Commons, either version 4 of the License, or (at your
 ** option) any later version.
 ******************************************************************/
-#include "ResourceManager.h"
 
+#include "ResourceManager.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <filesystem>
 
 #include "stb_image/stb_image.h"
+#include <vector>
+
+namespace fs = std::filesystem;
 
 // Instantiate static variables
 std::map<std::string, Texture2D>    ResourceManager::Textures;
 std::map<std::string, Shader>       ResourceManager::Shaders;
+std::map<std::string, std::vector<Texture2D>> ResourceManager::Animations;
 
 Shader ResourceManager::LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name)
 {
@@ -38,6 +43,16 @@ Texture2D ResourceManager::LoadTexture(const char *file, bool alpha, std::string
 Texture2D ResourceManager::GetTexture(std::string name)
 {
     return Textures[name];
+}
+
+std::vector<Texture2D> ResourceManager::LoadAnimation(const char* file, bool alpha, std::string name) {
+    Animations[name] = loadTexturesFromFolder(file, alpha);
+    return Animations[name];
+}
+
+std::vector<Texture2D> ResourceManager::GetAnimation(std::string name)
+{
+    return Animations[name];
 }
 
 void ResourceManager::Clear()
@@ -112,4 +127,17 @@ Texture2D ResourceManager::loadTextureFromFile(const char *file, bool alpha)
     // and finally free image data
     stbi_image_free(data);
     return texture;
+}
+
+std::vector<Texture2D> ResourceManager::loadTexturesFromFolder(const std::string& folderPath, bool alpha) {
+    std::vector<Texture2D> textures;
+
+    for (const auto& entry : fs::directory_iterator(folderPath)) {
+        if (entry.path().extension() == ".png") {
+            Texture2D texture = ResourceManager::loadTextureFromFile(entry.path().string().c_str(), alpha);
+            textures.push_back(texture);
+        }
+    }
+
+    return textures;
 }

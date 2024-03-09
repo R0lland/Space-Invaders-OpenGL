@@ -48,6 +48,7 @@ void GameLevel::Play(float deltaTime)
 {
     AliensManager& aliensManager = *ServiceLocator::GetManager<AliensManager>();
     aliensManager.AliensMovement(deltaTime);
+    aliensManager.UpdateAliens(deltaTime);
 }
 
 void GameLevel::Draw(SpriteRenderer &renderer)

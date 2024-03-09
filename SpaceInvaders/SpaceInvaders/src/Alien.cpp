@@ -10,6 +10,11 @@ Alien::Alien(glm::vec2 pos, glm::vec2 size, Texture2D sprite,
 	glm::vec3 color, glm::vec2 velocity)
 	: Actor(pos, size, sprite, color, velocity) {}
 
+Alien::Alien(glm::vec2 pos, glm::vec2 size, std::vector<Texture2D> animations,
+    glm::vec3 color, glm::vec2 velocity) : Actor(pos, size, animations, color, velocity)
+{
+}
+
 void Alien::Move(int horizontalDirection, int verticalDirection, float dt) {
     /*if (horizontalDirection == 0 && verticalDirection == 0) {
         return;

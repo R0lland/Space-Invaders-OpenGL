@@ -19,12 +19,13 @@ private:
 	std::vector<std::shared_ptr<Alien>> m_Aliens {};
 	CurrentDirection _currentDirection = CurrentDirection::None;
 	
-	const float _maxVerticalMovementAmount = 1.f;
+	const float _maxVerticalMovementAmount = .6f;
 	float _currentMovementAmount = 0.f;
 public:
 	std::vector<std::shared_ptr<Alien>>& CreateAliens(std::vector<std::vector<unsigned int>> tileData, unsigned int levelWidth, unsigned int levelHeight);
 
 	void AliensMovement(float deltaTime);
+	void UpdateAliens(float deltaTime);
 	void StopAliensMovement();
 	inline std::vector<std::shared_ptr<Alien>>& GetAliens() { return m_Aliens; };
 	inline void ClearAliens() { m_Aliens.clear(); }
