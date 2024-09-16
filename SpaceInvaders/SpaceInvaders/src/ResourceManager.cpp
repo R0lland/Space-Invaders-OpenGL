@@ -20,16 +20,16 @@ namespace fs = std::filesystem;
 
 // Instantiate static variables
 std::map<std::string, Texture2D>    ResourceManager::Textures;
-std::map<std::string, Shader>       ResourceManager::Shaders;
+std::map<std::string, OpenGLShader>       ResourceManager::Shaders;
 std::map<std::string, std::vector<Texture2D>> ResourceManager::Animations;
 
-Shader ResourceManager::LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name)
+OpenGLShader ResourceManager::LoadShader(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile, std::string name)
 {
     Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
     return Shaders[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+OpenGLShader ResourceManager::GetShader(std::string name)
 {
     return Shaders[name];
 }
@@ -65,7 +65,7 @@ void ResourceManager::Clear()
         glDeleteTextures(1, &iter.second.ID);
 }
 
-Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile)
+OpenGLShader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *fShaderFile, const char *gShaderFile)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -105,7 +105,7 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
     const char *gShaderCode = geometryCode.c_str();
     // 2. now create shader object from source code
     
-    Shader shader;
+    OpenGLShader shader;
     shader.Compile(vShaderCode, fShaderCode, gShaderFile != nullptr ? gShaderCode : nullptr);
     return shader;
 }

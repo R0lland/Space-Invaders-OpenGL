@@ -48,7 +48,7 @@
     <ClCompile Include="src\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shader.cpp">
+    <ClCompile Include="src\OpenGLShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\SpriteRenderer.cpp">
@@ -140,7 +140,7 @@
     <ClInclude Include="src\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shader.h">
+    <ClInclude Include="src\OpenGLShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\SpriteRenderer.h">
@@ -1455,6 +1455,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Animator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

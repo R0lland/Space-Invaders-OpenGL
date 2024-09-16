@@ -5,7 +5,7 @@
 // {
 // }
 
-SpriteRenderer::SpriteRenderer(Shader &shader)
+SpriteRenderer::SpriteRenderer(OpenGLShader &shader)
 {
     this->shader = shader;
     this->initRenderData();

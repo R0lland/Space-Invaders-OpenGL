@@ -51,7 +51,7 @@ void Game::Init()
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     ResourceManager::GetShader("particle").Use().SetMatrix4("projection", projection);
     // set render-specific controls
-    Shader myShader = ResourceManager::GetShader("sprite");
+    OpenGLShader myShader = ResourceManager::GetShader("sprite");
     Renderer = new SpriteRenderer(myShader);
     // load textures
     //ResourceManager::LoadTexture("res/textures/awesomeface.png", true, "face");

@@ -16,7 +16,6 @@ void Player::Fire()
     if (fireRate >= TIME_TO_FIRE)
     {
         fireRate = 0.0f;
-        std::cout << "FIRE" << std::endl;
         m_bulletsManager->CreateBullet(GetTransform().Position + glm::vec2(GetTransform().Size.x / 2.0f, (GetTransform().Size.y + 1.0f) / 2.0f), 1);
     }
 }

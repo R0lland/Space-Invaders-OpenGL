@@ -1,4 +1,1 @@
-﻿  AliensManager.cpp
-D:\Projetos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\AliensManager.cpp(8,22): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-D:\Projetos\Space-Invaders-OpenGL\SpaceInvaders\SpaceInvaders\src\AliensManager.cpp(9,21): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  SpaceInvaders.vcxproj -> D:\Projetos\Space-Invaders-OpenGL\SpaceInvaders\x64\Debug\SpaceInvaders.exe
+﻿

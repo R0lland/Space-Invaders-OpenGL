@@ -28,7 +28,7 @@ public:
     // holds a list of pre-compiled Characters
     std::map<char, Character> Characters; 
     // shader used for text rendering
-    Shader TextShader;
+    OpenGLShader TextShader;
     // constructor
     TextRenderer(unsigned int width, unsigned int height);
     // pre-compiles a list of characters from the given font
